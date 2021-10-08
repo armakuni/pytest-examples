@@ -22,13 +22,13 @@ pytest -v
 
 All of the test examples live in the [tests](tests) folder:
 
-| Subfolder            | Description                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------|
-| [aws](aws)           | Shows how to mock AWS calls.                                                              |
-| [fixtures](fixtures) | Examples for using pytest fixtures.                                                       |
-| [http](http)         | Shows how to mock HTTP calls - to third party APIs, for example.                          |
-| [mocking](mocking)   | Examples demonstrating how to mock functions, class methods, etc.                         |
-| [simple](simple)     | Demonstrations of common pytest use cases, such as asserting that an exception is thrown. |
+| Subfolder                  | Description                                                                               |
+|----------------------------|-------------------------------------------------------------------------------------------|
+| [aws](tests/aws)           | Shows how to mock AWS calls.                                                              |
+| [fixtures](tests/fixtures) | Examples for using pytest fixtures.                                                       |
+| [http](tests/http)         | Shows how to mock HTTP calls - to third party APIs, for example.                          |
+| [mocking](tests/mocking)   | Examples demonstrating how to mock functions, class methods, etc.                         |
+| [simple](tests/simple)     | Demonstrations of common pytest use cases, such as asserting that an exception is thrown. |
 
 Some of the test examples explore classic import gotchas. The source code that is tested resides in [lib](lib).
 
