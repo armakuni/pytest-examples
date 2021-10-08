@@ -15,12 +15,13 @@ def test_add_and_multiply_mocked(mock_add10):
     assert add_and_multiply(5, 3) == 12  # 4 * 3, rather than (5 + 10) * 3
 
 
-# def test_add_and_multiply_mocked_no_decorator():
-#     m = mock.patch(__name__ + '.add_10')
-#     m.__enter__ = mock.Mock(return_value=4)
-#     m.__exit__ = mock.Mock(return_value=False)
-
-#     assert add_and_multiply(5, 3) == 12  # 4 * 3, rather than (5 + 10) * 3
+def test_add_and_multiply_mocked_no_decorator():
+    m = mock.patch(__name__ + '.add_10', return_value=mock.Mock(
+        __enter__=mock.Mock(return_value=4),
+        __exit__=mock.Mock(return_value=False)
+    ))
+    with m:
+        assert add_and_multiply(5, 3) == 12  # 4 * 3, rather than (5 + 10) * 3
 
 
 def add_and_multiply(input, multiplier):
