@@ -4,7 +4,7 @@ import pytest
 @pytest.fixture
 def db():
     db = DB({"foo": "bar"})
-    yield(db)
+    yield (db)
     db.close()
 
 
@@ -12,7 +12,7 @@ def test_db(db):
     assert db.find("foo") == "bar"
 
 
-class DB():
+class DB:
     def __init__(self, content):
         self.content = content
 

@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def hostname():
-    return 'localhost'
+    return "localhost"
 
 
 @pytest.fixture
@@ -13,13 +13,14 @@ def port():
 
 @pytest.fixture
 def api_path():
-    return '/api/v1'
+    return "/api/v1"
 
 
 @pytest.fixture
 def api_url(hostname, port, api_path):
     def construct_url(path):
         return f"https://{hostname}:{port}{api_path}{path}"
+
     return construct_url
 
 

@@ -5,10 +5,9 @@ from unittest import mock
 
 @pytest.fixture
 def env_creds():
-    with mock.patch.dict(os.environ, {
-        "CRED_USERNAME": "fred",
-        "CRED_PASSWORD": "secret"
-    }):
+    with mock.patch.dict(
+        os.environ, {"CRED_USERNAME": "fred", "CRED_PASSWORD": "secret"}
+    ):
         yield
 
 

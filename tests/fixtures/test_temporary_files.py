@@ -11,7 +11,7 @@ def config_file(tmp_path, contents):
     file = tmp_path / "foo.json"
     try:
         file.write_text(contents)
-        yield(str(file))
+        yield (str(file))
     finally:
         file.unlink()
 

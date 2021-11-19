@@ -2,7 +2,7 @@ from unittest import mock
 import pytest
 
 
-class Item():
+class Item:
     def __init__(self):
         self._price = 4
 
@@ -13,7 +13,7 @@ class Item():
         return self._price * units
 
 
-@mock.patch.object(Item, 'price', return_value=5)
+@mock.patch.object(Item, "price", return_value=5)
 def test_mocking_object_method_with_return_value(mock_price):
     item = Item()
     assert item.price() == 5
@@ -21,14 +21,14 @@ def test_mocking_object_method_with_return_value(mock_price):
 
 def test_mocking_object_method():
     item = Item()
-    with mock.patch.object(item, 'price', return_value=5):
+    with mock.patch.object(item, "price", return_value=5):
         assert item.price() == 5
     assert item.price() == 4
 
 
 # This test shows how to mock the constructor to always return a particular object
 def test_mock_constructor():
-    with mock.patch('test_mock_classes.Item', autospec=True) as mock_item:
+    with mock.patch("test_mock_classes.Item", autospec=True) as mock_item:
         mock_item.return_value = mock_item
         mock_item.price.return_value = 10
         item = Item()
@@ -40,10 +40,11 @@ def test_mock_constructor():
 @pytest.fixture
 def mock_item():
     orig_item_class = Item  # otherwise we will recurse with patched Item
-    with mock.patch('test_mock_classes.Item', autospec=True) as the_mock:
+    with mock.patch("test_mock_classes.Item", autospec=True) as the_mock:
         the_mock.return_value = the_mock
         the_mock.total_price.side_effect = lambda units: orig_item_class.total_price(
-            the_mock, units)
+            the_mock, units
+        )
         yield the_mock
 
 

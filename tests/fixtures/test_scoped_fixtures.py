@@ -9,7 +9,7 @@ def super_expensive_db():
     global scoped_hit_count
     scoped_hit_count += 1
     pretend_db = {"hits": scoped_hit_count}
-    yield(pretend_db)
+    yield (pretend_db)
 
 
 def test_scoped_db_1(super_expensive_db):

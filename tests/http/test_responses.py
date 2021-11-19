@@ -6,11 +6,10 @@ from fizzbuzz.lib.client import Client
 
 @responses.activate
 def test_http_get():
-    responses.add(responses.GET, 'http://localhost/weee',
-                  body="foobar", status=400)
-    status_code, text = get_http('http://localhost/weee')
+    responses.add(responses.GET, "http://localhost/weee", body="foobar", status=400)
+    status_code, text = get_http("http://localhost/weee")
     assert status_code == 400
-    assert text == 'foobar'
+    assert text == "foobar"
 
 
 def get_http(url):
