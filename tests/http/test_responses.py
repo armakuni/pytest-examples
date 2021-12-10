@@ -1,7 +1,5 @@
-import pytest
 import responses
 import requests
-from fizzbuzz.lib.client import Client
 
 
 @responses.activate

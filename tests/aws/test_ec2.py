@@ -1,4 +1,3 @@
-import pytest
 import boto3
 from moto import mock_ec2
 

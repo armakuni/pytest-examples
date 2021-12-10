@@ -3,3 +3,6 @@ test:
 
 fmt:
 	black .
+
+lint:
+	flake8 .
