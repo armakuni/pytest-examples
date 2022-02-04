@@ -35,3 +35,5 @@ Some of the test examples explore classic import gotchas. The source code that i
 ## Fizzbuzz application
 
 We created a simple "application", [fizzbuzz](fizzbuzz) to show many of the testing techniques in action. This application consists of a web server (wrapping a library method in an API) and a client. It demonstrates how you would unit test each part in isolation - so, for example, you would do not run the server to validate the client.
+
+You can find the tests in [tests/fizzbuzz](tests/fizzbuzz).
