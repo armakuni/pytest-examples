@@ -25,9 +25,9 @@ def test_creds_unset():
 @pytest.fixture
 def more_creds(env_creds):
     # pre-patched os.environ can be extended
-    os.environ['EXTRA_CRED'] = 'someothersecret'
+    os.environ["EXTRA_CRED"] = "someothersecret"
 
 
 def test_more_environment_variables(more_creds):
-    assert os.environ.get('EXTRA_CRED') == 'someothersecret'
+    assert os.environ.get("EXTRA_CRED") == "someothersecret"
     assert os.environ.get("CRED_USERNAME") == "fred"

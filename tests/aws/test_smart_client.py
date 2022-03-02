@@ -12,9 +12,10 @@ from moto import mock_s3
 def mock_boto3(codepipeline_client):
     clients = {"codepipeline": codepipeline_client}
     _orig_boto3_client = boto3.client
-    with mock.patch('boto3.client') as mocked_boto3:
+    with mock.patch("boto3.client") as mocked_boto3:
         mocked_boto3.side_effect = lambda client_type, **kwargs: clients.get(
-            client_type, _orig_boto3_client(client_type, **kwargs))
+            client_type, _orig_boto3_client(client_type, **kwargs)
+        )
         yield mocked_boto3
 
 
@@ -22,7 +23,9 @@ def mock_boto3(codepipeline_client):
 def codepipeline_client(pipeline_name, pipeline_details):
     mock_client = mock.Mock()
     mock_client.pipeline_dict = {pipeline_name: pipeline_details}
-    mock_client.get_pipeline.side_effect = lambda pn: mock_client.pipeline_dict.get(pn, {})
+    mock_client.get_pipeline.side_effect = lambda pn: mock_client.pipeline_dict.get(
+        pn, {}
+    )
     return mock_client
 
 
@@ -43,22 +46,22 @@ def pipeline_details():
 
 
 def test_codepipeline_mock(mock_boto3, pipeline_name, pipeline_details):
-    '''demonstrate getting the mocked codepipeline client'''
+    """demonstrate getting the mocked codepipeline client"""
     client = boto3.client("codepipeline")
     details = client.get_pipeline(pipeline_name)
     assert details == pipeline_details
 
 
 def test_codepipeline_mock_import(mock_boto3, pipeline_name, pipeline_details):
-    '''demonstrate using the mock boto3 with a separate library'''
+    """demonstrate using the mock boto3 with a separate library"""
     details = get_pipeline_details(pipeline_name)
     assert details == pipeline_details
 
 
 def test_mock_s3(mock_boto3_with_s3):
-    '''demonstrate using the enhanced boto3 client'''
-    s3 = boto3.client('s3', region_name='us-east-1')
-    s3.create_bucket(Bucket='mybucket')
+    """demonstrate using the enhanced boto3 client"""
+    s3 = boto3.client("s3", region_name="us-east-1")
+    s3.create_bucket(Bucket="mybucket")
     result = s3.list_buckets()
-    names = [x['Name'] for x in result['Buckets']]
-    assert names == ['mybucket']
+    names = [x["Name"] for x in result["Buckets"]]
+    assert names == ["mybucket"]
