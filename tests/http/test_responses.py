@@ -23,7 +23,7 @@ def base_url():
 
 @pytest.fixture
 def mock_responses():
-    # responses by default expects all registered calls to be made by the code, so turn this off
+    # responses by default asserts that all registered calls to be made by the code, so turn this off
     with responses.RequestsMock(assert_all_requests_are_fired=False) as rsps:
         yield rsps
 
